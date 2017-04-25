@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place system declarations here.
+urgent chan fly;
+
+//int fuelMass, rocketMass, effectiveVelocity, setDistance, setTime;
+clock wt;
+int w0 = 5;
+
+int rocketMass = 55;
+int fuelMass = 25;
+int effectiveVelocity = 60;
+int sd = 50;
+int st = 10;
+
+int dv = 10;//effectiveVelocity;//*((rocketMass+fuelMass)/rocketMass);
+</declaration><template><name x="5" y="5">SpaceDiagram</name><declaration>// Place local declarations here.
+</declaration><location id="id0" x="-368" y="48"></location><location id="id1" x="-240" y="48"></location><location id="id2" x="-128" y="48"></location><location id="id3" x="-128" y="160"><name x="-138" y="130">blackhole</name></location><location id="id4" x="-240" y="160"></location><location id="id5" x="-368" y="160"></location><location id="id6" x="-496" y="160"></location><location id="id7" x="-128" y="272"></location><location id="id8" x="-240" y="272"></location><location id="id9" x="-496" y="272"></location><location id="id10" x="-496" y="376"></location><location id="id11" x="-496" y="48"><name x="-506" y="18">venus</name></location><location id="id12" x="-128" y="376"></location><location id="id13" x="-376" y="272"></location><location id="id14" x="-376" y="376"></location><location id="id15" x="-240" y="376"></location><init ref="id15"/><transition><source ref="id7"/><target ref="id3"/><label kind="guard" x="-188" y="186">dv &lt; 0</label></transition><transition><source ref="id8"/><target ref="id5"/></transition><transition><source ref="id10"/><target ref="id13"/></transition><transition><source ref="id14"/><target ref="id10"/></transition><transition><source ref="id2"/><target ref="id1"/></transition><transition><source ref="id4"/><target ref="id2"/></transition><transition><source ref="id7"/><target ref="id4"/></transition><transition><source ref="id12"/><target ref="id7"/></transition><transition><source ref="id12"/><target ref="id8"/></transition><transition><source ref="id6"/><target ref="id5"/></transition><transition><source ref="id11"/><target ref="id6"/></transition><transition><source ref="id0"/><target ref="id5"/></transition><transition><source ref="id0"/><target ref="id11"/></transition><transition><source ref="id1"/><target ref="id0"/></transition><transition><source ref="id4"/><target ref="id1"/></transition><transition><source ref="id5"/><target ref="id4"/></transition><transition><source ref="id9"/><target ref="id5"/></transition><transition><source ref="id13"/><target ref="id9"/></transition><transition><source ref="id14"/><target ref="id9"/></transition><transition><source ref="id15"/><target ref="id13"/><label kind="guard" x="-352" y="240">dv &gt;= sd/st</label><label kind="synchronisation" x="-348" y="253">fly?</label><label kind="assignment" x="-348" y="268">wt=w0,
+dv = dv - sd/st</label></transition><transition><source ref="id15"/><target ref="id14"/><label kind="guard" x="-364" y="346">dv &gt;= sd/st</label><label kind="synchronisation" x="-364" y="361">fly?</label><label kind="assignment" x="-364" y="376">wt = w0,
+dv = dv - sd/st</label></transition><transition><source ref="id15"/><target ref="id12"/><label kind="guard" x="-216" y="376">dv &gt;= sd/st</label><label kind="synchronisation" x="-208" y="424">fly?</label><label kind="assignment" x="-208" y="392">wt = w0,
+dv = dv - sd/st</label></transition></template><template><name>Controller</name><location id="id16" x="-144" y="-8"></location><init ref="id16"/><transition><source ref="id16"/><target ref="id16"/><label kind="synchronisation" x="-204" y="-23">fly!</label><nail x="-208" y="104"/><nail x="-216" y="-24"/></transition></template><system>SpaceDiagram1 = SpaceDiagram();
+Controller1 = Controller();
+system SpaceDiagram1, Controller1;</system></nta>
